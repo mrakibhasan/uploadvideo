@@ -19,4 +19,6 @@ Limitation:
 This web service does not return video duration and bit rate. I have used Xuggler to retrieve duration and bitrate but it 
 is showing some dependency problem though I have used maven dependency but It does not come up in runtime. (I have commented this java code)
 
-The file is going to upload to the working directory. The full file path location will log to the console.
+please change the file location to be uploaded.or use the following to upload in working directory
+        private static final String workingDir = System.getProperty("user.dir");
+ The full file path location will log to the console.
