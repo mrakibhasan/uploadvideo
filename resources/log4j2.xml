@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<properties>
+		<property name="name">app</property>
+		<property name="pattern">%d{yyyy-MM-dd HH:mm:ss} | %-5.5p | %-10.10t | %-20.20C:%-5.5L | %msg%n</property>
+	</properties>
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${pattern}"/>
+		</Console>
+		<RollingFile name="RollingFile" fileName="C:/Users/Rakib/Pictures/apache-tomcat-8.0.47/apache-tomcat-8.0.47/logs/${name}.log"
+				 filePattern="C:/Users/Rakib/Pictures/apache-tomcat-8.0.47/apache-tomcat-8.0.47/logs/$${date:yyyy-MM}/${name}-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB"/>
+			</Policies>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<root level="debug"> <!-- We log everything -->
+			<appender-ref ref="Console"/> <!-- To console -->
+			<appender-ref ref="RollingFile"/> <!-- And to a rotated file -->
+		</root>
+	</loggers>
+</configuration>
